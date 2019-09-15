@@ -1,0 +1,11 @@
+<div class="pt-4 pb-4">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <div class="d-flex align-items-center">
+        <h1>New Category</h1>
+        <%= link_to 'Back', categories_path, class: 'btn btn-outline-secondary ml-auto' %>
+      </div>
+      <%= render 'form', category: @category %>
+    </div>
+  </div>
+</div>

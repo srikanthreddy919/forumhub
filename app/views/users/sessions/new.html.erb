@@ -1,0 +1,29 @@
+  
+<div class="auth-form">
+  <h2>Log in</h2>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="form-group">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :password %><br />
+      <%= f.password_field :password, autocomplete: "current-password", class: 'form-control' %>
+    </div>
+    <div class="d-flex">
+      <% if devise_mapping.rememberable? %>
+        <div class="custom-control custom-checkbox form-group">
+          <%= f.check_box :remember_me, class: 'custom-control-input', id: 'remember-check' %>
+          <%= f.label :remember_me, class: "custom-control-label", for: "remember-check" %>
+        </div>
+      <% end %>
+      <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+        <%= link_to "Forgot your password?", new_password_path(resource_name), class: 'ml-auto' %><br />
+      <% end %>
+    </div>
+    <div class="actions form-group">
+      <%= f.submit "Log in", class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+  <%= render "users/shared/links" %>
+</div>
