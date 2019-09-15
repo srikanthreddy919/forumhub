@@ -1,0 +1,25 @@
+<div class="pt-4 pb-4">
+  <p>
+    <strong>
+      <%= @question.title %>
+    </strong>
+  </p>
+  <p>
+    by
+    <span class="text-primary"><%= @question.user.full_name %></span>
+  </p>
+  <hr>
+  <% if current_user == @question.user %>
+    <%= link_to 'Edit', edit_question_path(@question), class: 'btn btn-sm btn-success' %>
+    <%= link_to 'Destroy', @question, method: :delete, class: 'btn btn-sm btn-danger',data: { confirm: 'Are you sure?' } %>
+  <% end %>
+  <hr>
+  <p>
+    Posted on <%= @question.created_at.strftime('%B %d, %Y') %>
+    at <%= @question.created_at.strftime('%H:%M') %>
+  </p>
+  <hr>
+  <p>
+    <%= @question.body %>
+  </p>
+</div>

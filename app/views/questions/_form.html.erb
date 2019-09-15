@@ -1,0 +1,27 @@
+<%= form_with(model: question, local: true) do |form| %>
+  <% if question.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(question.errors.count, "error") %> prohibited this question from being saved:</h2>
+      <ul>
+        <% question.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="form-group">
+    <%= form.label :category_id %>
+    <%= form.collection_select(:category_id, @categories, :id, :title, {include_blank: "Select Category"}, {class: 'form-control'}) %>
+  </div>
+  <div class="form-group">
+    <%= form.label :title %>
+    <%= form.text_field :title, class: 'form-control', required: true %>
+  </div>
+  <div class="form-group">
+    <%= form.label :body %>
+    <%= form.text_area :body, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= form.submit "Submit", class: 'btn btn-primary' %>
+  </div>
+<% end %>
