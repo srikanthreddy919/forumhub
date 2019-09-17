@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  resources :questions
+  root to: "pages#index"
+  resources :questions do
+    resources :comments, module: :questions
+  end
   resources :categories
-  root to: 'pages#index'
   devise_for :users
 end

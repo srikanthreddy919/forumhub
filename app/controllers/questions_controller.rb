@@ -11,6 +11,13 @@ class QuestionsController < ApplicationController
   # GET /questions/1
   # GET /questions/1.json
   def show
+    @comments = if params[:comment]
+                  @question.comments.where(id: params[:comment])
+                else
+                  @question.comments.where(parent_id: nil)
+                end
+
+    @pagy, @comments = pagy(@comments, items: 10)
   end
 
   # GET /questions/new
