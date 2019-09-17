@@ -5,3 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+User.create(full_name: "Admin", email: "admin@forumhub.com", password: "password", role: :admin)
+User.create(full_name: "Sample User", email: "user@forumhub.com", password: "password", role: :user)
+["Science", "Technolgy", "Software Development", "IT", "Ruby", "Rails", "Javascript"].each do |category|
+  Category.create(title: category)
+end
+
+Question.create(title: "How to install Ruby/Rails?", body: "How to install ruby on rails", user_id: User.last.id, category_id: Category.last.id)
